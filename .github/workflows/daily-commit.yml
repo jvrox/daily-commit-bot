@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Configure Git (jvrox)
+      - name: Configure Git (22f2000148@ds.study.iitm.ac.in)
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "22f2000148@ds.study.iitm.ac.in"
