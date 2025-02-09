@@ -1,0 +1,26 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '30 5 * * *'  # Runs daily at 5:30 AM UTC (11:00 AM IST)
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git with IITM email (22f2000148@ds.study.iitm.ac.in)
+        run: |
+          git config --global user.name "Jiya Verma"
+          git config --global user.email "22f2000148@ds.study.iitm.ac.in"
+
+      - name: Make a dummy change
+        run: |
+          date >> daily-commit.txt
+          git add daily-commit.txt
+          git commit -m "Automated daily commit: $(date)"
+          git push
